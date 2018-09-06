@@ -7,7 +7,9 @@ class App extends Component {
       // Do async stuff
       // When success happens we'll redirect
       this.props.history.push("/dashboard");
-    } catch (e) {}
+    } catch (e) {
+      
+    }
   };
   render() {
     return (
