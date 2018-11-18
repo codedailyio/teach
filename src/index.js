@@ -1,5 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
+import AppClass from "./AppClass";
 
-ReactDOM.render(<App />, document.getElementById("root"));
+const appExamples = (
+  <div>
+    <App />
+    <AppClass />
+  </div>
+);
+ReactDOM.render(appExamples, document.getElementById("root"));
