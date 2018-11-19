@@ -7,17 +7,17 @@ const logMousePosition = e => {
   });
 };
 
-const Position = () =>{
+const Position = () => {
   useEffect(() => {
     window.addEventListener("mousemove", logMousePosition);
     console.log("Created");
     return () => {
       console.log("Cleaned up");
-      window.removeEventListener('mousemove', logMousePosition);
-    }
-  }, [])
+      window.removeEventListener("mousemove", logMousePosition);
+    };
+  }, []);
   return null;
-}
+};
 
 const App = () => {
   const [trigger, setTrigger] = useState(true);
