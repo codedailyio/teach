@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@emotion/core": "^10.0.4",
-    "@emotion/styled": "^10.0.4",
+    "@emotion/core": "^10.0.5",
+    "@emotion/styled": "^10.0.5",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-scripts": "^2.1.1"
