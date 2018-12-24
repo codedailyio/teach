@@ -1,0 +1,48 @@
+.pill {
+  width: 88px;
+  font-size: 14px;
+  border-radius: 9999px;
+  font-family: Helvetica, sans-serif;
+  overflow: hidden;
+  padding: 4px;
+  position: relative;
+}
+
+.container {
+  height: 24px;
+  position: relative;
+}
+.fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 1;
+}
+.content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: #fff;
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 2;
+}
+
+.img {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  color: #333;
+  border-radius: 50%;
+}
+.text {
+  font-weight: 500;
+}
