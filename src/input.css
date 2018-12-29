@@ -1,0 +1,28 @@
+.App {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+.wrap {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  display: inline-block;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.input {
+  width: 30px;
+  height: 52px;
+  border: none;
+  border-right: 1px solid rgba(0, 0, 0, 0.2);
+  font-size: 32px;
+  font-weight: bold;
+  text-align: center;
+  color: #333;
+  outline: 0;
+}
+
+.input:last-child {
+  border-right: none;
+}
