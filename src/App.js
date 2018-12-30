@@ -4,69 +4,79 @@ import "./input.css";
 const CODE_LENGTH = new Array(6).fill(0);
 
 class App extends Component {
-  inputRefs = CODE_LENGTH.map(() => React.createRef());
+  input = React.createRef();
   state = {
     value: "",
+    focused: false,
   };
-  handleKeyUp = (e, index) => {
-    e.persist();
+
+  handleClick = () => {
+    this.input.current.focus();
+  };
+  handleFocus = () => {
+    this.setState({ focused: true });
+  };
+  handleBlur = () => {
+    this.setState({
+      focused: false,
+    });
+  };
+  handleKeyUp = e => {
     if (e.key === "Backspace") {
-      if (this.state.value.length !== 0) {
-        this.inputRefs[this.state.value.length - 1].current.focus();
-      }
-    }
-  };
-  handleChange = (e, index) => {
-    let inputValue = e.target.value.slice(-1);
-
-    this.setState(
-      state => {
-        let valueLength = state.value.length - 1;
-        let value = state.value;
-
-        let newValue = inputValue === "" ? value.slice(0, valueLength) : value + inputValue;
-
-        if (index - 1 !== valueLength) {
-          newValue = value.slice(0, index) + inputValue + value.slice(index, valueLength);
-        }
-
+      this.setState(state => {
         return {
-          value: newValue,
+          value: state.value.slice(0, state.value.length - 1),
         };
-      },
-      () => {
-        if (index !== CODE_LENGTH.length - 1) {
-          this.inputRefs[this.state.value.length].current.focus();
-        }
-      },
-    );
-  };
-  handleFocus = index => {
-    if (this.state.value.length - 1 !== index) {
-      let focusIndex =
-        this.state.value.length !== CODE_LENGTH.length
-          ? this.state.value.length
-          : CODE_LENGTH.length - 1;
-
-      this.inputRefs[focusIndex].current.focus();
+      });
     }
+  };
+  handleChange = e => {
+    const value = e.target.value;
+
+    this.setState(state => {
+      if (state.value.length >= CODE_LENGTH.length) return null;
+      return {
+        value: (state.value + value).slice(0, CODE_LENGTH.length),
+      };
+    });
   };
   render() {
-    const values = this.state.value.split("");
+    const { value, focused } = this.state;
+
+    const values = value.split("");
+    const selectedIndex =
+      values.length < CODE_LENGTH.length ? values.length : CODE_LENGTH.length - 1;
+
+    const hideInput = !(values.length < CODE_LENGTH.length);
 
     return (
       <div className="App">
-        <div className="wrap">
+        <div className="wrap" onClick={this.handleClick}>
+          <input
+            value=""
+            ref={this.input}
+            onChange={this.handleChange}
+            onKeyUp={this.handleKeyUp}
+            onFocus={this.handleFocus}
+            onBlur={this.handleBlur}
+            className="input"
+            style={{
+              width: "32px",
+              top: "0px",
+              bottom: "0px",
+              left: `${selectedIndex * 32}px`,
+              opacity: hideInput ? 0 : 1,
+            }}
+          />
           {CODE_LENGTH.map((v, index) => {
+            const selected = values.length === index;
+            const filled = values.length === CODE_LENGTH.length && index === CODE_LENGTH.length - 1;
+
             return (
-              <input
-                className="input"
-                value={values[index]}
-                ref={this.inputRefs[index]}
-                onKeyUp={e => this.handleKeyUp(e, index)}
-                onChange={e => this.handleChange(e, index)}
-                onFocus={() => this.handleFocus(index)}
-              />
+              <div className="display">
+                {values[index]}
+                {(selected || filled) && focused && <div className="shadows" />}
+              </div>
             );
           })}
         </div>
