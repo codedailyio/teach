@@ -44,6 +44,7 @@ class App extends Component {
     const { value, focused } = this.state;
 
     const values = value.split("");
+    
     const selectedIndex =
       values.length < CODE_LENGTH.length ? values.length : CODE_LENGTH.length - 1;
 

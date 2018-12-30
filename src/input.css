@@ -8,7 +8,6 @@
 .wrap {
   border: 1px solid rgba(0, 0, 0, 0.2);
   display: inline-block;
-  /* border-radius: 10px; */
   position: relative;
   display: flex;
 }
