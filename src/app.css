@@ -1,0 +1,41 @@
+body {
+  margin: 0;
+  padding: 0;
+  overflow-y: scroll;
+}
+.hidden {
+  overflow: hidden;
+  height: 100vh;
+}
+
+.App {
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+img {
+  object-fit: contain;
+}
+
+.move {
+  display: flex;
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.5);
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: 0;
+}
+
+.back {
+  left: 5px;
+}
+.next {
+  right: 5px;
+}
