@@ -70,21 +70,19 @@ class App extends Component {
 
     let nextIndex = endingIndex;
 
-    if (deltaInteger === 0 && currentIndex >= endingIndex && endPartial >= 0.1) {
-      nextIndex += 1;
-    } else if (deltaInteger === -1 && currentIndex === maxLength) {
-      if (endPartial > 0.9) {
-        nextIndex = maxLength;
+    if (deltaInteger >= 0) {
+      if (endPartial >= 0.1 && (deltaInteger >= 1 || currentIndex >= endingIndex)) {
+        nextIndex += 1;
       }
     } else if (deltaInteger < 0) {
       nextIndex = currentIndex + deltaInteger;
 
+      if (deltaInteger === -1 && currentIndex === maxLength && endPartial > 0.9) {
+        nextIndex = maxLength;
+      }
+
       if (endPartial <= 0.9 && deltaInteger >= Math.abs(deltaInteger)) {
         nextIndex -= 1;
-      }
-    } else if (deltaInteger > 0) {
-      if (endPartial >= 0.1 && deltaInteger >= 1) {
-        nextIndex += 1;
       }
     }
 
