@@ -97,57 +97,49 @@ class App extends Component {
     const maxMovement = maxLength * IMG_WIDTH;
 
     return (
-      <div className="hidden">
-        <div className="App">
+      <div className="App">
+        <div
+          className="main"
+          style={{
+            width: `${IMG_WIDTH}px`,
+            height: `${IMG_HEIGHT}px`,
+          }}
+          onTouchStart={this.handleTouchStart}
+          onTouchMove={this.handleTouchMove}
+          onTouchEnd={this.handleTouchEnd}
+          onWheel={this.handleWheel}
+        >
           <div
+            className="swiper"
             style={{
-              width: `${IMG_WIDTH}px`,
-              height: `${IMG_HEIGHT}px`,
-              backgroundColor: "#000",
-              overflow: "hidden",
-              position: "relative",
+              transform: `translateX(${movement * -1}px)`,
+              transitionDuration: transitionDuration,
             }}
-            onTouchStart={this.handleTouchStart}
-            onTouchMove={this.handleTouchMove}
-            onTouchEnd={this.handleTouchEnd}
-            onWheel={this.handleWheel}
           >
-            <div
-              style={{
-                display: "flex",
-                overflowX: "visible",
-                touchAction: "pan-y",
-                transform: `translateX(${movement * -1}px)`,
-                transitionProperty: "transform",
-                transitionDuration: transitionDuration,
-                willChange: "transform",
+            {imgs.map(src => {
+              return <img key={src} src={src} width="100%" height="100%" />;
+            })}
+          </div>
+          {movement !== 0 && (
+            <button
+              className="back move"
+              onClick={() => {
+                this.transitionTo(currentIndex - 1, 0.5);
               }}
             >
-              {imgs.map(src => {
-                return <img key={src} src={src} width="100%" height="100%" />;
-              })}
-            </div>
-            {movement !== 0 && (
-              <button
-                className="back move"
-                onClick={() => {
-                  this.transitionTo(currentIndex - 1, 0.5);
-                }}
-              >
-                ←
-              </button>
-            )}
-            {movement !== maxMovement && (
-              <button
-                className="next move"
-                onClick={() => {
-                  this.transitionTo(currentIndex + 1, 0.5);
-                }}
-              >
-                →
-              </button>
-            )}
-          </div>
+              ←
+            </button>
+          )}
+          {movement !== maxMovement && (
+            <button
+              className="next move"
+              onClick={() => {
+                this.transitionTo(currentIndex + 1, 0.5);
+              }}
+            >
+              →
+            </button>
+          )}
         </div>
       </div>
     );

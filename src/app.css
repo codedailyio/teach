@@ -1,19 +1,23 @@
-body {
-  margin: 0;
-  padding: 0;
-  overflow-y: scroll;
-}
-.hidden {
-  overflow: hidden;
-  height: 100vh;
-}
-
 .App {
   display: flex;
   height: 100vh;
   align-items: center;
   justify-content: center;
 }
+
+.main {
+  background-color: #000;
+  overflow: hidden;
+  position: relative;
+}
+
+.swiper {
+  display: flex;
+  overflow-x: visible;
+  transition-property: transform;
+  will-change: transform;
+}
+
 img {
   object-fit: contain;
 }
