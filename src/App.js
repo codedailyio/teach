@@ -56,22 +56,14 @@ class App extends Component {
       };
     });
   };
-  handleBack = () => {
-    this.transitionTo(this.state.currentIndex - 1, 0.5);
-  };
-  handleNext = () => {
-    this.transitionTo(this.state.currentIndex + 1, 0.5);
-  };
+
   handleMovementEnd = () => {
-    const maxLength = this.state.imgs.length - 1;
     const { movement, currentIndex } = this.state;
 
     const endPosition = movement / IMG_WIDTH;
     const endPartial = endPosition % 1;
     const endingIndex = endPosition - endPartial;
-
     const deltaInteger = endingIndex - currentIndex;
-    const totalOffset = endPosition - currentIndex;
 
     let nextIndex = endingIndex;
 
@@ -135,13 +127,23 @@ class App extends Component {
                 return <img key={src} src={src} width="100%" height="100%" />;
               })}
             </div>
-            {currentIndex !== 0 && movement !== 0 && (
-              <button className="back move" onClick={this.handleBack}>
+            {movement !== 0 && (
+              <button
+                className="back move"
+                onClick={() => {
+                  this.transitionTo(currentIndex - 1, 0.5);
+                }}
+              >
                 ←
               </button>
             )}
-            {currentIndex !== maxLength && movement !== maxMovement && (
-              <button className="next move" onClick={this.handleNext}>
+            {movement !== maxMovement && (
+              <button
+                className="next move"
+                onClick={() => {
+                  this.transitionTo(currentIndex + 1, 0.5);
+                }}
+              >
                 →
               </button>
             )}
