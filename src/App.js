@@ -95,7 +95,9 @@ class App extends Component {
     }, 10);
   };
   render() {
-    const { currentIndex } = this.state;
+    const { currentIndex, movement, transitionDuration, imgs } = this.state;
+    const maxLength = imgs.length - 1;
+    const maxMovement = maxLength * IMG_WIDTH;
 
     return (
       <div className="hidden">
@@ -118,22 +120,22 @@ class App extends Component {
                 display: "flex",
                 overflowX: "visible",
                 touchAction: "pan-y",
-                transform: `translateX(${this.state.movement * -1}px)`,
+                transform: `translateX(${movement * -1}px)`,
                 transitionProperty: "transform",
-                transitionDuration: this.state.transitionDuration,
+                transitionDuration: transitionDuration,
                 willChange: "transform",
               }}
             >
-              {this.state.imgs.map(src => {
+              {imgs.map(src => {
                 return <img key={src} src={src} width="100%" height="100%" />;
               })}
             </div>
-            {currentIndex !== 0 && (
+            {currentIndex !== 0 && movement !== 0 && (
               <button className="back move" onClick={this.handleBack}>
                 ←
               </button>
             )}
-            {currentIndex !== this.state.imgs.length - 1 && (
+            {currentIndex !== maxLength && movement !== maxMovement && (
               <button className="next move" onClick={this.handleNext}>
                 →
               </button>
