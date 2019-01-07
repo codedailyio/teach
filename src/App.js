@@ -7,6 +7,7 @@ const IMG_HEIGHT = 400;
 
 class App extends Component {
   wheelTimeout;
+  transitionTimeout;
   lastTouch = 0;
   state = {
     imgs: ["/img1.jpg", "/img2.jpg", "/img3.jpg", "/img4.jpg"],
@@ -14,6 +15,10 @@ class App extends Component {
     movement: 0,
     transitionDuration: "0s",
   };
+  componentWillUnmount = () => {
+    clearTimeout(this.transitionTimeout);
+  };
+
   handleTouchStart = e => {
     this.lastTouch = e.nativeEvent.touches[0].clientX;
   };
@@ -29,7 +34,7 @@ class App extends Component {
   };
   handleWheel = e => {
     this.handleMovement(e.deltaX);
-    this.wheelTimeout = setTimeout(() => this.handleMovementEnd(), 150);
+    this.wheelTimeout = setTimeout(() => this.handleMovementEnd(), 100);
   };
   handleMovement = delta => {
     clearTimeout(this.wheelTimeout);
@@ -90,7 +95,7 @@ class App extends Component {
       transitionDuration: `${duration}s`,
     });
 
-    setTimeout(() => {
+    this.transitionTimeout = setTimeout(() => {
       this.setState({ transitionDuration: "0s" });
     }, 10);
   };
