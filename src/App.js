@@ -38,6 +38,8 @@ class App extends Component {
     this.wheelTimeout = setTimeout(() => this.handleMovementEnd(), 100);
   };
   handleMovement = delta => {
+    clearTimeout(this.transitionTimeout);
+
     this.setState(state => {
       const maxLength = state.imgs.length - 1;
 
@@ -53,6 +55,7 @@ class App extends Component {
 
       return {
         movement: nextMovement,
+        transitionDuration: "0s",
       };
     });
   };
@@ -67,15 +70,8 @@ class App extends Component {
 
     let nextIndex = endingIndex;
 
-    console.log({
-      endPosition,
-      endPartial,
-      endingIndex,
-      deltaInteger,
-      currentIndex,
-    });
     if (deltaInteger >= 0) {
-      if (endPartial >= 0.1 ) {
+      if (endPartial >= 0.1) {
         nextIndex += 1;
       }
     } else if (deltaInteger < 0) {
