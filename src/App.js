@@ -38,9 +38,10 @@ class App extends Component {
   };
   handleMovement = delta => {
     clearTimeout(this.wheelTimeout);
-    const maxLength = this.state.imgs.length - 1;
 
     this.setState(state => {
+      const maxLength = state.imgs.length - 1;
+
       let nextMovement = state.movement + delta;
 
       if (nextMovement < 0) {
