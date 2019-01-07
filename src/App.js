@@ -75,14 +75,9 @@ class App extends Component {
         nextIndex += 1;
       }
     } else if (deltaInteger < 0) {
-      nextIndex = currentIndex + deltaInteger;
-
-      if (deltaInteger === -1 && currentIndex === maxLength && endPartial > 0.9) {
-        nextIndex = maxLength;
-      }
-
-      if (endPartial <= 0.9 && deltaInteger >= Math.abs(deltaInteger)) {
-        nextIndex -= 1;
+      nextIndex = currentIndex - Math.abs(deltaInteger);
+      if (endPartial > 0.9) {
+        nextIndex += 1;
       }
     }
 
