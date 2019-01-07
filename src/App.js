@@ -67,8 +67,15 @@ class App extends Component {
 
     let nextIndex = endingIndex;
 
+    console.log({
+      endPosition,
+      endPartial,
+      endingIndex,
+      deltaInteger,
+      currentIndex,
+    });
     if (deltaInteger >= 0) {
-      if (endPartial >= 0.1 && (deltaInteger >= 1 || currentIndex >= endingIndex)) {
+      if (endPartial >= 0.1 ) {
         nextIndex += 1;
       }
     } else if (deltaInteger < 0) {
@@ -89,7 +96,7 @@ class App extends Component {
 
     this.transitionTimeout = setTimeout(() => {
       this.setState({ transitionDuration: "0s" });
-    }, 10);
+    }, duration * 100);
   };
   render() {
     const { currentIndex, movement, transitionDuration, imgs } = this.state;
