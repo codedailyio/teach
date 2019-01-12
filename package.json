@@ -1,5 +1,5 @@
 {
-  "name": "loadbletest",
+  "name": "detect_auto_fill",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
