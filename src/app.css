@@ -1,0 +1,52 @@
+.App {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@keyframes onAutoFillStart {
+}
+
+@keyframes onAutoFillCancel {
+}
+
+.input_container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin-top: 16px;
+}
+
+.label {
+  font-size: 16px;
+  line-height: 16px;
+  position: absolute;
+  left: 4px;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: all 0.25s ease;
+  pointer-events: none;
+  font-family: Helvetica, sans-serif;
+}
+
+.hide {
+  top: -8px;
+  left: 0;
+  font-size: 12px;
+  pointer-events: all;
+}
+
+.input {
+  height: 30px;
+  width: 100px;
+  padding: 8px 4px;
+  font-size: 18px;
+}
+.input:-webkit-autofill {
+  animation-name: onAutoFillStart;
+  transition: background-color 50000s ease-in-out 0s;
+}
+
+.input:not(:-webkit-autofill) {
+  animation-name: onAutoFillCancel;
+}
