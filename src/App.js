@@ -20,7 +20,7 @@ class App extends Component {
     return (
       <div className="App">
         <label className="input_container">
-          <span className={`label ${hideLabel ? "hide" : ""}`}>Name</span>
+          <span className={`label ${hideLabel ? "hide" : ""}`}>Email</span>
           <input
             className="input"
             value={value}
