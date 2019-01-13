@@ -1,0 +1,50 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+@keyframes bond {
+  5% {
+    opacity: 1;
+  }
+  99.99% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.App {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #000;
+}
+
+.circle {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background-color: #fff;
+}
+
+.item {
+  opacity: 0;
+  animation: bond .75s linear forwards;
+}
+
+.container {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  display: flex;
+  transform: translateY(-50%);
+}
+.mover {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateX(0) translateY(-50%);
+}
