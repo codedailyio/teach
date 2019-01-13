@@ -17,7 +17,7 @@ const App = () => {
       setIndex(index + increment.current);
     }, 500);
     return () => clearInterval(interval);
-  });
+  }, []);
   return (
     <div className="App">
       <div className="background">
