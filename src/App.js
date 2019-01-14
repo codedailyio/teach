@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./app.css";
 
-const circleCount = Math.floor(window.innerWidth / 200);
+const circleCount = Math.ceil(window.innerWidth / 200);
 const circles = Array.from(Array(circleCount).keys());
 
 class App extends Component {
@@ -13,7 +13,7 @@ class App extends Component {
       this.setState({
         animate: true,
       });
-    }, 1);
+    }, 0);
   };
 
   render() {
@@ -25,9 +25,7 @@ class App extends Component {
             transform: `translateX(${
               !this.state.animate ? "0px" : circleCount * 200
             }px) translateY(-50%)`,
-            transition: `transform ${circleCount * 0.75}s linear, opacity 0s linear ${circleCount *
-              0.75}s`,
-            opacity: this.state.animate ? 0 : 1,
+            transition: `transform ${circleCount * 0.75}s linear`,
           }}
         />
         <div className="container">
