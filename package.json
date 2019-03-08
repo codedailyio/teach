@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@emotion/core": "^10.0.7",
+    "@emotion/styled": "^10.0.7",
     "react": "^16.8.2",
     "react-dom": "^16.8.2",
     "react-scripts": "^2.1.5"
@@ -18,5 +20,9 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "jest-emotion": "^10.0.7",
+    "react-testing-library": "^6.0.0"
+  }
 }
