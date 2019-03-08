@@ -1,0 +1,30 @@
+.App {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+button {
+  border: none;
+  background-color: #f1f1f1;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+input {
+  font-size: 16px;
+  padding: 0;
+  margin-right: 10px;
+}
+form {
+  margin-top: 20px;
+}
+.actions {
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+}
+.actions button {
+  margin-right: 10px;
+}
